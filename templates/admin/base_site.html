@@ -1,0 +1,41 @@
+{% extends "admin/base.html" %}
+
+{% comment %} {% load i18n  eatn_tags static %} {% endcomment %}
+
+{% load i18n %}
+
+{% load static %}
+
+ 
+
+{% block title %}{{ title }} | {% trans "EVShope Administration" %}{% endblock %}
+
+{% block extrastyle %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/admin_color.css' %}"/>
+
+{% endblock %}
+
+ 
+
+{% block branding %}
+
+    <h1 id="site-name">
+        <a href="{% url 'admin:index' %}">
+            <img src="{% static './images/logo11.jpg' %}" 
+            style="margin-right: 7px;
+            max-height: 60px;
+            max-width: 200px;
+            display: inline-block;
+            border:1px;
+            border-radius:60px" />
+        </a>
+        {% trans "EVShope Administration" %}
+
+    </h1>
+
+{% endblock %}
+
+ 
+
+{% block nav-global %}{% endblock %}
