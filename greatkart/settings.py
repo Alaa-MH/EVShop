@@ -30,7 +30,7 @@ SECRET_KEY = '694E703Eeee912E3059F603Eb2Ec189Af046Ca6804730A67'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ["https://ev-shope.herokuapp.com"]
+ALLOWED_HOSTS = [".pythonanywhere.com",'127.0.0.1']
 
 
 # Application definition
