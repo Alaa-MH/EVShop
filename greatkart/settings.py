@@ -150,12 +150,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR /'media'
 
 #CLOUDINARY-STORAGE configuration
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': "du2ksvwdd",
-    'API_KEY': "733692135841163",
-    'API_SECRET': "4e-Pq3rfVX_P6xI_8pHb5iuEw5A"
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': "du2ksvwdd",
+#     'API_KEY': "733692135841163",
+#     'API_SECRET': "4e-Pq3rfVX_P6xI_8pHb5iuEw5A"
+# }
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 from django.contrib.messages import constants as messages
