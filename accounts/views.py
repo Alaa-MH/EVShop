@@ -33,11 +33,7 @@ def register(request):
             user.phone_number = phone_number
             user.save()
 
-            # Create a user profile
-            profile = UserProfile()
-            profile.user_id = user.id
-            profile.profile_picture = 'default/default-user.png'
-            profile.save()
+
 
             # USER ACTIVATION
             current_site = get_current_site(request)
@@ -155,11 +151,11 @@ def activate(request, uidb64, token):
 
 @login_required(login_url = 'login')
 def dashboard(request):
-    orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
+    orders = Order.objects.order_by('-created_at').filter(user=request.user, is_ordered=True)
     orders_count = orders.count()
     userprofile=None
-    if UserProfile.objects.filter(user_id=request.user.id).exists():
-        userprofile = UserProfile.objects.get(user_id=request.user.id)
+    if UserProfile.objects.filter(user=request.user).exists():
+        userprofile = UserProfile.objects.get(user=request.user)
     context = {
         'orders_count': orders_count,
         'userprofile': userprofile,
