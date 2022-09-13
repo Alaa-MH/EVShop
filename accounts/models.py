@@ -90,5 +90,5 @@ class UserProfile(models.Model):
     
     @property
     def get_default_profile_picture(self):
-        return 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'
+        return '/images/default-user.png'
 

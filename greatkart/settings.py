@@ -14,7 +14,6 @@ from pathlib import Path
 from decouple import config
 import os
 from django.urls import reverse_lazy
-import django_heroku
 import cloudinary_storage
 
 
@@ -26,10 +25,10 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '694E703Eeee912E3059F603Eb2Ec189Af046Ca6804730A67'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG',cast=bool)
 ALLOWED_HOSTS = [".pythonanywhere.com",'127.0.0.1']
 
 
@@ -143,33 +142,23 @@ STATICFILES_DIRS = [
     'greatkart/static',
 ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # media files configuration
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR /'media'
 
-#CLOUDINARY-STORAGE configuration
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': "du2ksvwdd",
-#     'API_KEY': "733692135841163",
-#     'API_SECRET': "4e-Pq3rfVX_P6xI_8pHb5iuEw5A"
-# }
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-
+#error messages
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
 # SMTP configuration    
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'tiemsy568@gmail.com'
-EMAIL_HOST_PASSWORD = 'mnugkqdpfxuqegqe'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'EVShop Site'
 
-
-#heroku configuration
-django_heroku.settings(locals())
